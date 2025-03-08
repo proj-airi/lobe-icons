@@ -9,6 +9,8 @@ Contributions, corrections & requests can be made on their [GitHub repository](h
 
 This enables you to use Lobe Icons in UnoCSS or any Iconify compatible scenario.
 
+</div>
+
 ## Installation
 
 Pick the package manager of your choice:
