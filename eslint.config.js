@@ -3,15 +3,8 @@ import antfu from '@antfu/eslint-config'
 
 export default antfu(
   {
-    unocss: true,
+    unocss: false,
     formatters: true,
-    ignores: [
-      '**/assets/js/**',
-      '**/assets/live2d/models/**',
-      'apps/stage-tamagotchi/out/**',
-      '**/drizzle/**',
-      '**/.astro/**',
-    ],
     rules: {
       'import/order': [
         'error',

@@ -24,9 +24,6 @@ jobs:
       - name: Install
         run: pnpm install
 
-      - name: Stub
-        run: pnpm run packages:stub
-
       - name: Lint
         run: pnpm run lint
 
@@ -44,13 +41,9 @@ jobs:
       - name: Install
         run: pnpm install
 
-      - name: Stub
-        run: pnpm run packages:stub
-
       - name: Build
         run: |
-          pnpm run packages:build
-          pnpm run apps:build
+          pnpm run build
 
   typecheck:
     name: Type Check

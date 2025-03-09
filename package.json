@@ -2,8 +2,8 @@
   "name": "@proj-airi/lobe-icons",
   "type": "module",
   "version": "0.3.6",
+  "packageManager": "pnpm@10.6.1",
   "description": "Iconify JSON IconSet port for @lobehub/icons",
-  "packageManager": "pnpm@9.15.7",
   "author": {
     "name": "Project AIRI Team",
     "email": "airi-team@moeru.ai",
@@ -35,13 +35,38 @@
     "package.json"
   ],
   "scripts": {
+    "postinstall": "npx simple-git-hooks",
     "dev": "unbuild",
     "stub": "unbuild",
-    "build": "unbuild"
+    "build": "unbuild",
+    "lint": "eslint --cache .",
+    "lint:fix": "eslint --cache --fix .",
+    "typecheck": "tsc --noEmit",
+    "sizecheck": "npx vite-bundle-visualizer",
+    "up": "taze major -I",
+    "changelogithub": "changelogithub"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^4.8.1",
     "@iconify/tools": "^4.1.1",
     "@lobehub/icons-static-svg": "^1.30.0",
-    "local-pkg": "^1.1.1"
+    "eslint": "^9.22.0",
+    "eslint-plugin-format": "^1.0.1",
+    "lint-staged": "^15.4.3",
+    "local-pkg": "^1.1.1",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "^5.8.2",
+    "unbuild": "^3.5.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }
