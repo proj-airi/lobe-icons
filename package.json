@@ -1,7 +1,7 @@
 {
   "name": "@proj-airi/lobe-icons",
   "type": "module",
-  "version": "0.3.6",
+  "version": "1.0.0",
   "packageManager": "pnpm@10.6.1",
   "description": "Iconify JSON IconSet port for @lobehub/icons",
   "author": {
