@@ -87,8 +87,3 @@ jobs:
         run: pnpm publish -r --access public --no-git-checks
         env:
           NPM_CONFIG_PROVENANCE: true
-
-      - name: Sync GitHub Release
-        run: pnpm run changelogithub
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
