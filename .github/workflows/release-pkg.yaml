@@ -38,27 +38,14 @@ jobs:
         with:
           run_install: false
 
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Packages build
-        run: pnpm run build
+        run: pnpm run packages:build
 
       - name: Packages publish
-        run: pnpm publish --access public --no-git-checks
+        run: pnpm publish -r --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
@@ -90,27 +77,14 @@ jobs:
         with:
           run_install: false
 
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Packages build
-        run: pnpm run build
+        run: pnpm run packages:build
 
       - name: Packages publish
-        run: pnpm publish --access public --no-git-checks
+        run: pnpm publish -r --access public --no-git-checks
         env:
           NPM_CONFIG_PROVENANCE: true
 
