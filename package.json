@@ -50,6 +50,7 @@
     "@iconify/tools": "^4.1.1",
     "@lobehub/icons-static-svg": "^1.30.0",
     "bumpp": "^10.1.0",
+    "changelogithub": "^13.13.0",
     "eslint": "^9.22.0",
     "eslint-plugin-format": "^1.0.1",
     "lint-staged": "^15.4.3",
