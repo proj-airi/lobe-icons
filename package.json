@@ -12,7 +12,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/moeru-ai/airi.git"
+    "url": "https://github.com/proj-airi/lobe-icons.git"
   },
   "exports": {
     "./*": "./*",
