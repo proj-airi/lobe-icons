@@ -34,7 +34,6 @@
     "package.json"
   ],
   "scripts": {
-    "postinstall": "npx simple-git-hooks",
     "dev": "unbuild",
     "stub": "unbuild",
     "build": "unbuild",
