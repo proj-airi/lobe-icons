@@ -1,5 +1,6 @@
-import { writeFile } from 'node:fs/promises'
+import { cp, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { cwd } from 'node:process'
 import { importDirectory } from '@iconify/tools'
 import { getPackageInfo, isPackageExists } from 'local-pkg'
 import { defineBuildConfig } from 'unbuild'
@@ -21,6 +22,12 @@ export default defineBuildConfig({
     './chars.json',
     './info.json',
   ],
+  dependencies: [
+    'metadata.json',
+    'icons.json',
+    'chars.json',
+    'info.json',
+  ],
   rollup: {
     emitCJS: true,
   },
@@ -36,13 +43,15 @@ export default defineBuildConfig({
       if (!pkg)
         throw new Error('Package @lobehub/icons-static-svg not found')
 
+      await cp(join(cwd(), 'src', 'icons'), join(pkg.rootPath, 'icons'), { recursive: true })
+
       const iconSetData = await importDirectory(join(pkg.rootPath, 'icons'), { prefix: 'lobe-icons', ignoreImportErrors: 'warn' })
       const iconJSONData = iconSetData.export()
 
-      await writeFile('./dist/metadata.json', json({ categories: iconSetData.categories }), { encoding: 'utf8' })
-      await writeFile('./dist/icons.json', json(iconJSONData), { encoding: 'utf8' })
-      await writeFile('./dist/chars.json', json({}), { encoding: 'utf8' })
-      await writeFile('./dist/info.json', json({
+      await writeFile(join('dist', 'metadata.json'), json({ categories: iconSetData.categories }), { encoding: 'utf8' })
+      await writeFile(join('dist', 'icons.json'), json(iconJSONData), { encoding: 'utf8' })
+      await writeFile(join('dist', 'chars.json'), json({}), { encoding: 'utf8' })
+      await writeFile(join('dist', 'info.json'), json({
         prefix: 'lobe-icons',
         name: 'Lobe Icons',
         total: Object.keys(iconJSONData.icons).length,
