@@ -3,37 +3,26 @@ import { join } from 'node:path'
 import { cwd } from 'node:process'
 import { importDirectory } from '@iconify/tools'
 import { getPackageInfo, isPackageExists } from 'local-pkg'
-import { defineBuildConfig } from 'unbuild'
+import { defineConfig } from 'tsdown'
 
-import packageJSON from './package.json'
+import packageJSON from './package.json' with { type: 'json' }
 
 function json(any: any) {
   return JSON.stringify(any, null, 2)
 }
 
-export default defineBuildConfig({
-  entries: [
-    { builder: 'rollup', input: 'src/index.ts', outDir: 'dist', declaration: true },
-    { builder: 'mkdist', input: './src', outDir: './dist', pattern: ['**/*.json'] },
-  ],
-  externals: [
+export default defineConfig({
+  entry: ['./src/index.ts'],
+  external: [
     './metadata.json',
     './icons.json',
     './chars.json',
     './info.json',
   ],
-  dependencies: [
-    'metadata.json',
-    'icons.json',
-    'chars.json',
-    'info.json',
-  ],
-  rollup: {
-    emitCJS: true,
-  },
-  declaration: true,
   sourcemap: false,
-  failOnWarn: false,
+  dts: true,
+  unused: true,
+  fixedExtension: true,
   hooks: {
     'build:done': async () => {
       if (!isPackageExists('@lobehub/icons-static-svg'))
