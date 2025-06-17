@@ -15,8 +15,8 @@ importers:
         specifier: ^4.1.2
         version: 4.1.2
       '@lobehub/icons-static-svg':
-        specifier: ^1.47.0
-        version: 1.47.0
+        specifier: ^1.48.0
+        version: 1.48.0
       bumpp:
         specifier: ^10.1.1
         version: 10.1.1
@@ -274,8 +274,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@lobehub/icons-static-svg@1.47.0':
-    resolution: {integrity: sha512-aYM0TXWQvrhYG4l6suZiL5en325tlb0RhpV15RUSKcJl2ljmi7f/S+jflDRzrk5Zt6d41H/muXmQuv5z0pnk3g==}
+  '@lobehub/icons-static-svg@1.48.0':
+    resolution: {integrity: sha512-L/IprXxyAw5NpbwabOczcmCQ2B2SkVI+yOuaDTbo67XEyelo5WbcF6oIjLalhoogBx9L9hrV+ZKQ++RUBXZs3g==}
 
   '@napi-rs/wasm-runtime@0.2.10':
     resolution: {integrity: sha512-bCsCyeZEwVErsGmyPNSzwfwFn4OdxBj0mmv6hOFucB/k81Ojdu68RbZdxYsRQUPc9l6SU5F/cG+bXgWs3oUgsQ==}
@@ -1792,8 +1792,8 @@ packages:
     resolution: {integrity: sha512-21t+ozMQDAL/UGgQVBbZ/xXvNO10++ZPuTmKRO8k9V3AClVRht49ahtDjfY8l1q6nSHOrE5ASfthzH3ol6R/hg==}
     engines: {node: '>=20.17'}
 
-  nanoid@3.3.9:
-    resolution: {integrity: sha512-SppoicMGpZvbF1l3z4x7No3OlIjP7QJvC9XR7AhZr1kL133KHnKPztkKDc+Ir4aJ/1VhTySrtKhrsycmrMQfvg==}
+  nanoid@3.3.11:
+    resolution: {integrity: sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
@@ -1958,8 +1958,8 @@ packages:
     resolution: {integrity: sha512-Q8qQfPiZ+THO/3ZrOrO0cJJKfpYCagtMUkXbnEfmgUjwXg6z/WBeOyS9APBBPCTSiDV+s4SwQGu8yFsiMRIudg==}
     engines: {node: '>=4'}
 
-  postcss@8.5.3:
-    resolution: {integrity: sha512-dle9A3yYxlBSrt8Fu+IpjGT8SY8hN0mlaA6GY8t0P5PjIOZemULz/E2Bnm/2dcUOena75OTNkHI76uZBNUUq3A==}
+  postcss@8.5.6:
+    resolution: {integrity: sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==}
     engines: {node: ^10 || ^12 || >=14}
 
   prelude-ls@1.2.1:
@@ -2634,7 +2634,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@lobehub/icons-static-svg@1.47.0': {}
+  '@lobehub/icons-static-svg@1.48.0': {}
 
   '@napi-rs/wasm-runtime@0.2.10':
     dependencies:
@@ -2934,7 +2934,7 @@ snapshots:
       '@vue/shared': 3.5.13
       estree-walker: 2.0.2
       magic-string: 0.30.17
-      postcss: 8.5.3
+      postcss: 8.5.6
       source-map-js: 1.2.1
 
   '@vue/compiler-ssr@3.5.13':
@@ -4425,7 +4425,7 @@ snapshots:
 
   nano-spawn@1.0.2: {}
 
-  nanoid@3.3.9: {}
+  nanoid@3.3.11: {}
 
   napi-postinstall@0.2.3: {}
 
@@ -4584,9 +4584,9 @@ snapshots:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
 
-  postcss@8.5.3:
+  postcss@8.5.6:
     dependencies:
-      nanoid: 3.3.9
+      nanoid: 3.3.11
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
