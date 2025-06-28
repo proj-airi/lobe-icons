@@ -1,6 +1,7 @@
 import { cp, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { cwd } from 'node:process'
+
 import { importDirectory } from '@iconify/tools'
 import { getPackageInfo, isPackageExists } from 'local-pkg'
 import { defineConfig } from 'tsdown'
