@@ -45,9 +45,9 @@
     "changelogithub": "changelogithub"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.19.0",
+    "@antfu/eslint-config": "^5.2.0",
     "@iconify/tools": "^4.1.2",
-    "@lobehub/icons-static-svg": "^1.60.0",
+    "@lobehub/icons-static-svg": "^1.61.0",
     "bumpp": "^10.2.2",
     "changelogithub": "^13.16.0",
     "eslint": "^9.32.0",
@@ -55,7 +55,7 @@
     "local-pkg": "^1.1.1",
     "simple-git-hooks": "^2.13.1",
     "taze": "^19.1.0",
-    "tsdown": "^0.12.9",
+    "tsdown": "^0.13.3",
     "typescript": "^5.9.2",
     "unplugin-unused": "^0.5.1"
   },
