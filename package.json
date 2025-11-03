@@ -2,7 +2,7 @@
   "name": "@proj-airi/lobe-icons",
   "type": "module",
   "version": "1.0.13",
-  "packageManager": "pnpm@10.18.2",
+  "packageManager": "pnpm@10.20.0",
   "description": "Iconify JSON IconSet port for @lobehub/icons",
   "author": {
     "name": "Project AIRI Team",
@@ -45,19 +45,19 @@
     "changelogithub": "changelogithub"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.4.1",
+    "@antfu/eslint-config": "^6.2.0",
     "@iconify/tools": "^4.1.4",
     "@lobehub/icons-static-svg": "^1.73.0",
     "bumpp": "^10.3.1",
-    "changelogithub": "^13.16.0",
-    "eslint": "^9.37.0",
-    "lint-staged": "^16.2.4",
+    "changelogithub": "^13.16.1",
+    "eslint": "^9.39.0",
+    "lint-staged": "^16.2.6",
     "local-pkg": "^1.1.2",
     "simple-git-hooks": "^2.13.1",
-    "taze": "^19.7.0",
-    "tsdown": "^0.15.6",
+    "taze": "^19.9.0",
+    "tsdown": "^0.15.12",
     "typescript": "^5.9.3",
-    "unplugin-unused": "^0.5.4"
+    "unplugin-unused": "^0.5.5"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
