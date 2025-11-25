@@ -38,10 +38,11 @@ jobs:
           # https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
           registry-url: 'https://registry.npmjs.org'
 
-      - uses: pnpm/action-setup@v3
-        name: Install pnpm
-        with:
-          run_install: false
+      # npm 11.5.1 or later is required so update to latest to use OIDC trusted publisher
+      # https://github.com/eslint/config-inspector/pull/174/files
+      # https://github.com/e18e/ecosystem-issues/issues/201
+      - name: Update npm to latest for Trusted Publisher (OIDC)
+        run: npm install -g npm@latest
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -51,9 +52,6 @@ jobs:
 
       - name: Packages publish
         run: pnpm publish -r --access public --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
 
       - name: Sync GitHub Release
         run: pnpm run changelogithub
