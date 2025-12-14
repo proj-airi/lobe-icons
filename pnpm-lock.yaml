@@ -4,48 +4,90 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    '@antfu/eslint-config':
+      specifier: ^6.7.1
+      version: 6.7.1
+    '@iconify/tools':
+      specifier: ^5.0.0
+      version: 5.0.0
+    '@lobehub/icons-static-svg':
+      specifier: ^1.74.0
+      version: 1.74.0
+    bumpp:
+      specifier: ^10.3.2
+      version: 10.3.2
+    changelogithub:
+      specifier: ^14.0.0
+      version: 14.0.0
+    eslint:
+      specifier: ^9.39.2
+      version: 9.39.2
+    lint-staged:
+      specifier: ^16.2.7
+      version: 16.2.7
+    local-pkg:
+      specifier: ^1.1.2
+      version: 1.1.2
+    simple-git-hooks:
+      specifier: ^2.13.1
+      version: 2.13.1
+    taze:
+      specifier: ^19.9.2
+      version: 19.9.2
+    tsdown:
+      specifier: ^0.17.4
+      version: 0.17.4
+    typescript:
+      specifier: ^5.9.3
+      version: 5.9.3
+    unplugin-unused:
+      specifier: ^0.5.6
+      version: 0.5.6
+
 importers:
 
   .:
     devDependencies:
       '@antfu/eslint-config':
-        specifier: ^6.7.1
+        specifier: 'catalog:'
         version: 6.7.1(@vue/compiler-sfc@3.5.13)(eslint-plugin-format@1.0.1(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       '@iconify/tools':
-        specifier: ^5.0.0
+        specifier: 'catalog:'
         version: 5.0.0
       '@lobehub/icons-static-svg':
-        specifier: ^1.74.0
+        specifier: 'catalog:'
         version: 1.74.0
       bumpp:
-        specifier: ^10.3.2
+        specifier: 'catalog:'
         version: 10.3.2
       changelogithub:
-        specifier: ^14.0.0
+        specifier: 'catalog:'
         version: 14.0.0
       eslint:
-        specifier: ^9.39.2
+        specifier: 'catalog:'
         version: 9.39.2(jiti@2.6.1)
       lint-staged:
-        specifier: ^16.2.7
+        specifier: 'catalog:'
         version: 16.2.7
       local-pkg:
-        specifier: ^1.1.2
+        specifier: 'catalog:'
         version: 1.1.2
       simple-git-hooks:
-        specifier: ^2.13.1
+        specifier: 'catalog:'
         version: 2.13.1
       taze:
-        specifier: ^19.9.2
+        specifier: 'catalog:'
         version: 19.9.2
       tsdown:
-        specifier: ^0.17.4
+        specifier: 'catalog:'
         version: 0.17.4(typescript@5.9.3)(unplugin-unused@0.5.6)
       typescript:
-        specifier: ^5.9.3
+        specifier: 'catalog:'
         version: 5.9.3
       unplugin-unused:
-        specifier: ^0.5.6
+        specifier: 'catalog:'
         version: 0.5.6
 
 packages:
@@ -326,24 +368,28 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@rolldown/binding-linux-arm64-musl@1.0.0-beta.53':
     resolution: {integrity: sha512-bGe5EBB8FVjHBR1mOLOPEFg1Lp3//7geqWkU5NIhxe+yH0W8FVrQ6WRYOap4SUTKdklD/dC4qPLREkMMQ855FA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@rolldown/binding-linux-x64-gnu@1.0.0-beta.53':
     resolution: {integrity: sha512-qL+63WKVQs1CMvFedlPt0U9PiEKJOAL/bsHMKUDS6Vp2Q+YAv/QLPu8rcvkfIMvQ0FPU2WL0aX4eWwF6e/GAnA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@rolldown/binding-linux-x64-musl@1.0.0-beta.53':
     resolution: {integrity: sha512-VGl9JIGjoJh3H8Mb+7xnVqODajBmrdOOb9lxWXdcmxyI+zjB2sux69br0hZJDTyLJfvBoYm439zPACYbCjGRmw==}
     engines: {node: ^20.19.0 || >=22.12.0}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@rolldown/binding-openharmony-arm64@1.0.0-beta.53':
     resolution: {integrity: sha512-B4iIserJXuSnNzA5xBLFUIjTfhNy7d9sq4FUMQY3GhQWGVhS2RWWzzDnkSU6MUt7/aHUrep0CdQfXUJI9D3W7A==}
