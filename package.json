@@ -2,7 +2,7 @@
   "name": "@proj-airi/lobe-icons",
   "type": "module",
   "version": "1.0.14",
-  "packageManager": "pnpm@10.20.0",
+  "packageManager": "pnpm@10.25.0",
   "description": "Iconify JSON IconSet port for @lobehub/icons",
   "author": {
     "name": "Project AIRI Team",
@@ -45,26 +45,19 @@
     "changelogithub": "changelogithub"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^6.2.0",
-    "@iconify/tools": "^4.1.4",
-    "@lobehub/icons-static-svg": "^1.73.0",
-    "bumpp": "^10.3.1",
-    "changelogithub": "^13.16.1",
-    "eslint": "^9.39.0",
-    "lint-staged": "^16.2.6",
-    "local-pkg": "^1.1.2",
-    "simple-git-hooks": "^2.13.1",
-    "taze": "^19.9.0",
-    "tsdown": "^0.15.12",
-    "typescript": "^5.9.3",
-    "unplugin-unused": "^0.5.5"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "simple-git-hooks",
-      "unrs-resolver"
-    ]
+    "@antfu/eslint-config": "catalog:",
+    "@iconify/tools": "catalog:",
+    "@lobehub/icons-static-svg": "catalog:",
+    "bumpp": "catalog:",
+    "changelogithub": "catalog:",
+    "eslint": "catalog:",
+    "lint-staged": "catalog:",
+    "local-pkg": "catalog:",
+    "simple-git-hooks": "catalog:",
+    "taze": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "unplugin-unused": "catalog:"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"

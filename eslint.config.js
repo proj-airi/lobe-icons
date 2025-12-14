@@ -3,6 +3,7 @@ import antfu from '@antfu/eslint-config'
 export default antfu(
   {
     unocss: false,
+    pnpm: true,
     rules: {
       'import/order': 'off',
       'antfu/import-dedupe': 'error',
