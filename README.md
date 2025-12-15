@@ -1,15 +1,17 @@
 <a name="readme-top"></a>
 
-<div align="center">
+# [Lobe Icons](https://lobehub.com/icons) ported into [Iconfiy](https://iconify.design/)
 
-<h1>Lobe Icons ported into <a href="https://iconify.design/">Iconfiy</a></h1>
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![bundle][bundle-src]][bundle-href]
+[![JSDocs][jsdocs-src]][jsdocs-href]
+[![License][license-src]][license-href]
 
 Popular AI / LLM Model Brand SVG Logo and Icon Collection. See them all on one page at [lobehub.com/icons](https://lobehub.com/icons).<br/>
 Contributions, corrections & requests can be made on their [GitHub repository](https://github.com/lobehub/lobe-icons).
 
 This enables you to use Lobe Icons in UnoCSS or any Iconify compatible scenario.
-
-</div>
 
 > [!NOTE]
 >
@@ -45,6 +47,8 @@ export default defineConfig({
 })
 ```
 
+Now you can use it with UnoCSS's `i-` syntax:
+
 ```html
 <div class i-lobe-icons:chatgpt></div>
 ```
@@ -67,3 +71,14 @@ export default defineConfig({
 - [`inventory`](https://github.com/moeru-ai/inventory): Centralized model catalog and default provider configurations backend service
 - [MCP Launcher](https://github.com/moeru-ai/mcp-launcher): Easy to use MCP builder & launcher for all possible MCP servers, just like Ollama for models!
 - [🥺 SAD](https://github.com/moeru-ai/sad): Documentation and notes for self-host and browser running LLMs.
+
+[npm-version-src]: https://img.shields.io/npm/v/@proj-airi/lobe-icons?style=flat&colorA=080f12&colorB=2a64be
+[npm-version-href]: https://npmjs.com/package/@proj-airi/lobe-icons
+[npm-downloads-src]: https://img.shields.io/npm/dm/@proj-airi/lobe-icons?style=flat&colorA=080f12&colorB=2a64be
+[npm-downloads-href]: https://npmjs.com/package/@proj-airi/lobe-icons
+[bundle-src]: https://img.shields.io/bundlephobia/minzip/@proj-airi/lobe-icons?style=flat&colorA=080f12&colorB=2a64be&label=minzip
+[bundle-href]: https://bundlephobia.com/result?p=@proj-airi/lobe-icons
+[license-src]: https://img.shields.io/github/license/proj-airi/iconify-lobe-icons.svg?style=flat&colorA=080f12&colorB=2a64be
+[license-href]: https://github.com/proj-airi/iconify-lobe-icons/blob/main/LICENSE
+[jsdocs-src]: https://img.shields.io/badge/jsdocs-reference-080f12?style=flat&colorA=080f12&colorB=2a64be
+[jsdocs-href]: https://www.jsdocs.io/package/@proj-airi/lobe-icons
