@@ -12,7 +12,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/proj-airi/lobe-icons.git"
+    "url": "https://github.com/proj-airi/iconify-lobe-icons.git"
   },
   "exports": {
     "./*": "./*",

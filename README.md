@@ -45,6 +45,10 @@ export default defineConfig({
 })
 ```
 
+```html
+<div class i-lobe-icons:chatgpt></div>
+```
+
 ## Other side projects born from Project AIRI
 
 - [Awesome AI VTuber](https://github.com/proj-airi/awesome-ai-vtuber): A curated list of AI VTubers and related projects

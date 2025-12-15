@@ -1,4 +1,4 @@
-# Start contributing to [`@proj-airi/lobe-icons`](https://github.com/proj-airi/lobe-icons)
+# Start contributing to [`@proj-airi/lobe-icons`](https://github.com/proj-airi/iconify-lobe-icons)
 
 Hello! Thank you for your interest in contributing to this project. This guide will help you get started.
 
@@ -92,13 +92,13 @@ git rebase main
 
 ## Fork this project
 
-Click on the **Fork** button on the top right corner of the [`proj-airi/lobe-icons`](https://github.com/proj-airi/lobe-icons) page.
+Click on the **Fork** button on the top right corner of the [`proj-airi/lobe-icons`](https://github.com/proj-airi/iconify-lobe-icons) page.
 
 ## Clone
 
 ```shell
-git clone https://github.com/<your-github-username>/lobe-icons.git
-cd airi
+git clone https://github.com/<your-github-username>/iconify-lobe-icons.git
+cd iconify-lobe-icons
 ```
 
 ## Create your working branch
@@ -184,12 +184,12 @@ You should be able to browse the branch on your fork repository.
 > If this is your first time contributing with this project, you need to add the upstream repository too:
 >
 > ```shell
-> git remote add upstream https://github.com/proj-airi/lobe-icons.git
+> git remote add upstream https://github.com/proj-airi/iconify-lobe-icons.git
 > ```
 
 ## Creating Pull Request
 
-Navigate to [`proj-airi/lobe-icons`](https://github.com/proj-airi/lobe-icons) page, click on the **Pull requests** tab, and click on the **New pull request** button, click on the **Compare across forks** link, and select your fork repository.
+Navigate to [`proj-airi/lobe-icons`](https://github.com/proj-airi/iconify-lobe-icons) page, click on the **Pull requests** tab, and click on the **New pull request** button, click on the **Compare across forks** link, and select your fork repository.
 
 Review the changes, and click on the **Create pull request** button.
 
