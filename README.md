@@ -1,8 +1,9 @@
 <a name="readme-top"></a>
 
-<img width="64" height="64" src="https://raw.githubusercontent.com/proj-airi/iconify-lobe-icons/main/docs/examples/openai.svg" />
-<img width="64" height="64" src="https://raw.githubusercontent.com/proj-airi/iconify-lobe-icons/main/docs/examples/gemini.svg" />
-<img width="64" height="64" src="https://raw.githubusercontent.com/proj-airi/iconify-lobe-icons/main/docs/examples/deepseek-color.svg" />
+<img width="64" height="64" src="https://raw.githubusercontent.com/proj-airi/iconify-lobe-icons/refs/heads/main/docs/examples/lobehub-color.svg" />
+<img width="64" height="64" src="https://raw.githubusercontent.com/proj-airi/iconify-lobe-icons/refs/heads/main/docs/examples/openai.svg" />
+<img width="64" height="64" src="https://raw.githubusercontent.com/proj-airi/iconify-lobe-icons/refs/heads/main/docs/examples/gemini-color.svg" />
+<img width="64" height="64" src="https://raw.githubusercontent.com/proj-airi/iconify-lobe-icons/refs/heads/main/docs/examples/deepseek-color.svg" />
 
 # [Lobe Icons](https://lobehub.com/icons) ported into [Iconfiy](https://iconify.design/)
 
