@@ -15,7 +15,6 @@
     "url": "https://github.com/proj-airi/iconify-lobe-icons.git"
   },
   "exports": {
-    "./*": "./*",
     ".": {
       "types": "./dist/index.d.mts",
       "import": "./dist/index.mjs",
@@ -23,7 +22,8 @@
     },
     "./icons.json": "./dist/icons.json",
     "./info.json": "./dist/info.json",
-    "./metadata.json": "./dist/metadata.json"
+    "./metadata.json": "./dist/metadata.json",
+    "./*": "./*"
   },
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
@@ -44,10 +44,14 @@
     "up": "taze -w -r -I -f && pnpm prune && pnpm dedupe",
     "changelogithub": "changelogithub"
   },
+  "dependencies": {
+    "@iconify/types": "catalog:"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",
     "@iconify/tools": "catalog:",
     "@lobehub/icons-static-svg": "catalog:",
+    "@types/node": "catalog:",
     "bumpp": "catalog:",
     "changelogithub": "catalog:",
     "eslint": "catalog:",
