@@ -47,8 +47,8 @@ export default defineConfig({
         total: Object.keys(iconJSONData.icons).length,
         version: packageJSON.version,
         author: {
-          name: packageJSON.author.name,
-          url: packageJSON.author.url,
+          name: 'LobeHub',
+          url: 'https://github.com/lobehub',
         },
         license: {
           title: 'MIT',
