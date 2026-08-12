@@ -37,3 +37,6 @@ coverage/
 **/temp/
 
 twitter-session.json
+
+# Generated at build time from @lobehub/icons
+src/build/*.generated.json
