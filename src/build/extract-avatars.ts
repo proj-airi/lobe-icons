@@ -24,6 +24,10 @@ export interface AvatarEntry {
   background: string
   color: string
   scale: number
+  /** whether lobe ships a Combine for this model (toc.hasCombine) */
+  combine: boolean
+  /** whether that Combine's leading glyph is an Avatar (e.g. OpenWebUI) */
+  avatarCombine: boolean
 }
 
 /**
@@ -82,6 +86,17 @@ export async function extractAvatars(): Promise<string> {
   const es = join(pkg.rootPath, 'es')
   const out: Record<string, AvatarEntry> = {}
 
+  // Only models lobe actually ships a Combine for get one: read the published toc flags.
+  const hasCombine: Record<string, boolean> = {}
+  try {
+    const toc = JSON.parse(readFileSync(join(es, 'toc.json'), 'utf8')) as Array<{ id: string, param?: { hasCombine?: boolean } }>
+    for (const entry of toc)
+      hasCombine[entry.id.toLowerCase()] = !!entry.param?.hasCombine
+  }
+  catch {
+    // toc missing/unreadable -> treat every model as not having a combine
+  }
+
   for (const name of readdirSync(es)) {
     const avatarFile = join(es, name, 'components', 'Avatar.js')
     const styleFile = join(es, name, 'style.js')
@@ -90,6 +105,7 @@ export async function extractAvatars(): Promise<string> {
 
     const avatar = readFileSync(avatarFile, 'utf8')
     const consts = grabConsts(readFileSync(styleFile, 'utf8'))
+    const combineSrc = existsSync(join(es, name, 'components', 'Combine.js')) ? readFileSync(join(es, name, 'components', 'Combine.js'), 'utf8') : ''
 
     let scale = Number.parseFloat(avatar.match(/iconMultiple:\s*([\d.]+)/)?.[1] ?? '')
     if (!Number.isFinite(scale) && consts.AVATAR_ICON_MULTIPLE != null)
@@ -102,6 +118,8 @@ export async function extractAvatars(): Promise<string> {
       background: resolve(consts.AVATAR_BACKGROUND ?? '', consts) || '#000',
       color: resolve(consts.AVATAR_COLOR ?? '', consts) || '#fff',
       scale,
+      combine: hasCombine[name.toLowerCase()] ?? false,
+      avatarCombine: /Icon:\s*Avatar/.test(combineSrc),
     }
   }
 

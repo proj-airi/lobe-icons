@@ -33,6 +33,10 @@ export interface AvatarConfig {
   background: string
   /** AVATAR_COLOR (used only for mono/inner foreground) */
   color: string
+  /** whether lobe ships a Combine for this model (toc.hasCombine) */
+  combine: boolean
+  /** whether that Combine's leading glyph is an Avatar (e.g. OpenWebUI) */
+  avatarCombine: boolean
   /** AVATAR_ICON_MULTIPLE */
   scale: number
 }
@@ -173,26 +177,64 @@ function sanitizeId(id: string): string {
 }
 
 /**
- * Compose an `avatar` SVG: the model's logo (mono tinted, or the color logo) scaled inside a
- * `circle` (round) or `rounded` (rounded-square) background.
+ * The model's foreground SVG (color logo, or mono logo tinted) as used in avatars.
  */
-export function buildAvatarSVG(mono: SVG | null, name: string, cfg: AvatarConfig, shape: 'circle' | 'rounded'): string {
-  const size = mono ? boxOf(mono).w : 24
+function avatarForeground(iconSet: IconSet, name: string, cfg: AvatarConfig): SVG | null {
+  if (cfg.icon === 'color' && iconSet.exists(`${name}-color`))
+    return iconSet.toSVG(`${name}-color`)
+  if ((cfg.icon === 'mono' || cfg.icon === 'inner') && iconSet.exists(name))
+    return iconSet.toSVG(name)
+  return null
+}
+
+/**
+ * Inner content (defs + background + scaled logo) of an avatar, without the `<svg>` wrapper.
+ */
+function avatarBody(fg: SVG | null, name: string, cfg: AvatarConfig, radius: number): string {
+  const size = fg ? boxOf(fg).w : 24
   const M = cfg.scale
-  const radius = shape === 'circle' ? size / 2 : size * AVATAR_SQUARE_RADIUS
   const gid = `g${sanitizeId(name)}`
   const { defs, fill } = backgroundMarkup(cfg.background, gid, size)
 
-  let icon = ''
-  if (mono) {
+  let logo = ''
+  if (fg) {
     const offset = (size - size * M) / 2
     // strip `currentColor` so our tint (or the baked colors of a color logo) applies
-    const body = cfg.icon === 'color' ? mono.getBody() : mono.getBody().replace(/\sfill="currentColor"/g, '')
+    const body = cfg.icon === 'color' ? fg.getBody() : fg.getBody().replace(/\sfill="currentColor"/g, '')
     const tint = cfg.icon === 'color' ? '' : ` fill="${cfg.color}"`
-    icon = `<g transform="translate(${fmt(offset)} ${fmt(offset)}) scale(${fmt(M)})"${tint}>${body}</g>`
+    logo = `<g transform="translate(${fmt(offset)} ${fmt(offset)}) scale(${fmt(M)})"${tint}>${body}</g>`
   }
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${fmt(size)} ${fmt(size)}">${defs}<rect width="${fmt(size)}" height="${fmt(size)}" rx="${fmt(radius)}" ry="${fmt(radius)}" ${fill}/>${icon}</svg>`
+  return `${defs}<rect width="${fmt(size)}" height="${fmt(size)}" rx="${fmt(radius)}" ry="${fmt(radius)}" ${fill}/>${logo}`
+}
+
+/**
+ * Compose an `avatar` SVG: the model's logo (mono tinted, or the color logo) scaled inside a
+ * `circle` (round) or `rounded` (rounded-square) background.
+ */
+export function buildAvatarSVG(fg: SVG | null, name: string, cfg: AvatarConfig, shape: 'circle' | 'rounded'): string {
+  const size = fg ? boxOf(fg).w : 24
+  const radius = shape === 'circle' ? size / 2 : size * AVATAR_SQUARE_RADIUS
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${fmt(size)} ${fmt(size)}">${avatarBody(fg, name, cfg, radius)}</svg>`
+}
+
+/**
+ * Compose a `combine` whose leading glyph is an avatar (e.g. OpenWebUI): the circle avatar
+ * beside a wide text wordmark. This is a single lockup — no separate color variant.
+ */
+export function buildCombineAvatarSVG(fg: SVG, text: SVG, name: string, cfg: AvatarConfig): string {
+  const size = boxOf(fg).w
+  const t = boxOf(text)
+  const tm = COMBINE_TEXT_MULTIPLE
+
+  const space = size * COMBINE_SPACE_MULTIPLE
+  const width = size + space + t.w * tm
+  const cx = size + space
+  const cy = (size - t.h * tm) / 2
+  const textTransform = `translate(${fmt(cx)} ${fmt(cy)}) scale(${fmt(tm)}) translate(${fmt(-t.x)} ${fmt(-t.y)})`
+
+  const body = avatarBody(fg, name, cfg, size / 2)
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${fmt(width)} ${fmt(size)}">${body}<g transform="${textTransform}" fill="currentColor">${text.getBody()}</g></svg>`
 }
 
 export interface GeneratedVariant {
@@ -203,36 +245,38 @@ export interface GeneratedVariant {
 /**
  * Generate `-combine`, `-combine-color`, `-avatar` (round) and `-avatar-square` (rounded)
  * variants. Every model in the generated avatar config is considered; gating is purely on
- * asset availability.
+ * asset availability (a combine also requires the model to ship one per toc.hasCombine).
  */
 export async function collectVariants(iconSet: IconSet): Promise<GeneratedVariant[]> {
   const models = await loadAvatarConfig()
   const out: GeneratedVariant[] = []
 
   for (const [name, cfg] of Object.entries(models)) {
-    // mono combine
-    if (iconSet.exists(name) && iconSet.exists(`${name}-text`)) {
-      const logo = iconSet.toSVG(name)
-      const text = iconSet.toSVG(`${name}-text`)
-      if (logo && text)
-        out.push({ name: `${name}-combine`, svg: buildCombineSVG(logo, text, 'mono') })
+    const text = iconSet.exists(`${name}-text`) ? iconSet.toSVG(`${name}-text`) : null
+
+    // combine whose leading glyph is an avatar (e.g. OpenWebUI) — a single lockup, no color variant
+    if (cfg.combine && cfg.avatarCombine && text && iconSet.exists(name)) {
+      const fg = avatarForeground(iconSet, name, cfg)
+      if (fg)
+        out.push({ name: `${name}-combine`, svg: buildCombineAvatarSVG(fg, text, name, cfg) })
     }
 
-    // color combine
-    if (iconSet.exists(`${name}-color`) && iconSet.exists(`${name}-text`)) {
-      const color = iconSet.toSVG(`${name}-color`)
-      const text = iconSet.toSVG(`${name}-text`)
-      if (color && text)
-        out.push({ name: `${name}-combine-color`, svg: buildCombineSVG(color, text, 'color') })
+    // mono / color combine (only where lobe ships a Combine, and not the avatar-led lockup above)
+    if (cfg.combine && !cfg.avatarCombine && text) {
+      if (iconSet.exists(name)) {
+        const logo = iconSet.toSVG(name)
+        if (logo)
+          out.push({ name: `${name}-combine`, svg: buildCombineSVG(logo, text, 'mono') })
+      }
+      if (iconSet.exists(`${name}-color`)) {
+        const color = iconSet.toSVG(`${name}-color`)
+        if (color)
+          out.push({ name: `${name}-combine-color`, svg: buildCombineSVG(color, text, 'color') })
+      }
     }
 
-    // avatar foreground source
-    let fg: SVG | null = null
-    if (cfg.icon === 'color' && iconSet.exists(`${name}-color`))
-      fg = iconSet.toSVG(`${name}-color`)
-    else if ((cfg.icon === 'mono' || cfg.icon === 'inner') && iconSet.exists(name))
-      fg = iconSet.toSVG(name)
-
+    // avatar (round + rounded-square)
+    const fg = avatarForeground(iconSet, name, cfg)
     out.push({ name: `${name}-avatar`, svg: buildAvatarSVG(fg, name, cfg, 'circle') })
     out.push({ name: `${name}-avatar-square`, svg: buildAvatarSVG(fg, name, cfg, 'rounded') })
   }
