@@ -50,6 +50,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",
     "@iconify/tools": "catalog:",
+    "@lobehub/icons": "catalog:",
     "@lobehub/icons-static-svg": "catalog:",
     "@types/node": "catalog:",
     "bumpp": "catalog:",

@@ -10,6 +10,7 @@
     "types": [
       "node"
     ],
+    "allowImportingTsExtensions": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
